@@ -1,0 +1,2 @@
+{message=New Barcode Created!}
+{InvoiceLink=http://abc.com/invoice.pdf, Result={success=true}}
