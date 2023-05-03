@@ -1,22 +1,24 @@
 package com.quiktrak.step_definitions;
 
 import com.quiktrak.pages.HomePage;
-import com.quiktrak.utilities.*;
-import io.cucumber.java.en.*;
-import org.junit.Assert;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
+import com.quiktrak.utilities.BrowserUtils;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
 
 
 public class HomePageStepDefs {
 
     HomePage homePage = new HomePage();
 
-    @Then("verify user able to get the page title")
-    public void verifyUserAbleToGetThePageTitle() {
+    @Then("verify user able to redirect the Home page")
+    public void verifyUserAbleToRedirectTheHomePage() {
         BrowserUtils.waitForPageToLoad(15);
-        homePage.goToVerifyTitlePage();
+        homePage.goToVerifyHomePage();
+    }
+
+    @And("verify all the options are available on Home Page Dashboard")
+    public void verifyAllTheOptionsAreAvailableOnHomePageDashboard() {
+        BrowserUtils.waitForPageToLoad(15);
+        homePage.verifyHomeDashboardTopMenu("Audits", "Contact", "Utilities", "Vasudeva Keerti");
     }
 }

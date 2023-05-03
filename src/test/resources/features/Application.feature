@@ -1,4 +1,4 @@
-Feature: Login the application
+Feature: Login the QT application
 Background:
 
   Given Open the Chrome and launch the application
@@ -6,4 +6,8 @@ Background:
 
 @sanity
 Scenario: Login application and validate the accessibility
-  Then verify user able to get the page title
+  Then verify user able to redirect the Home page
+
+  @sanity
+  Scenario: Access the top menu and validate pages are loading correctly
+  Then  verify all the options are available on Home Page Dashboard
