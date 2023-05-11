@@ -17,8 +17,10 @@ public class HomePageStepDefs {
     }
 
     @And("verify all the options are available on Home Page Dashboard")
-    public void verifyAllTheOptionsAreAvailableOnHomePageDashboard() {
+    public void verifyAllTheOptionsAreAvailableOnHomePageDashboard() throws InterruptedException {
         BrowserUtils.waitForPageToLoad(15);
         homePage.verifyHomeDashboardTopMenu("Audits", "Contact", "Utilities", "Vasudeva Keerti");
+
     }
+
 }

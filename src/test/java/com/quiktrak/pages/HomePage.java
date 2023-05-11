@@ -1,9 +1,11 @@
 package com.quiktrak.pages;
 
 import com.quiktrak.utilities.BrowserUtils;
+import com.quiktrak.utilities.Driver;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /*This page contains
  * Locaters of Web Elements
@@ -60,6 +62,32 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//span[text()='Inspectors']")
     WebElement inventoryReview;
 
+    @FindBy(xpath = "//span[@id='ctl00_ctl00_cphPageContent_cphPageContent_RadGrid1_ctl00_ctl04_lblJobNo']")
+    WebElement adtDetail;
+
+    @FindBy(xpath = "//span[text()='Edit']/ancestor::button")
+    WebElement edtMstTab;
+
+    @FindBy(xpath = "//button[@name='ctl00$cphPopupContent$fvAuditDetails$btnSave']//span[text()='Save']")
+    WebElement saveMstTab;
+
+    @FindBy(xpath = "//span[text()='Master']")
+    WebElement masterTab;
+
+    @FindBy(xpath = "//span[text()='Analysis']")
+    WebElement analysisTab;
+
+    @FindBy(xpath = "//span[text()='Units']")
+    WebElement unitsTab;
+
+    @FindBy(xpath = "//span[text()='Locations']")
+    WebElement locationsTab;
+
+    @FindBy(xpath = "//span[text()='Reports']/parent::span")
+    WebElement reportsTab;
+
+    @FindBy(xpath = "//div[@id='cphPageContent_pageview_MasterDetails']/iframe")
+    WebElement iPanel;
 
     public void goToVerifyHomePage() {
         String actualText = homeTab.getText();
@@ -68,7 +96,7 @@ public class HomePage extends BasePage {
         System.out.println("value is " + actualText);
     }
 
-    public void verifyHomeDashboardTopMenu(String audits, String contact, String utilities, String user) {
+    public void verifyHomeDashboardTopMenu(String audits, String contact, String utilities, String user) throws InterruptedException {
         String actualTextAdt = auditTab.getText();
         String expectTextAdt = audits;
         String actualTextCnt = contactTab.getText();
@@ -107,14 +135,7 @@ public class HomePage extends BasePage {
         click(portfolioMenu);
         click(reportsReview);
         click(homeTab);
-        /*click(portfolioMenu);
-        click(dashboardReview);
-        click(portfolioMenu);
-        click(pivotReview);
-        click(portfolioMenu);
-        click(inventoryReview);*/
 
     }
-
 
 }
