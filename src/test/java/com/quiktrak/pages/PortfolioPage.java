@@ -2,8 +2,8 @@ package com.quiktrak.pages;
 
 import com.quiktrak.utilities.Driver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /*This page contains
  * Locaters of Web Elements
@@ -11,17 +11,21 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * */
 public class PortfolioPage extends BasePage {
 
-    @FindBy(xpath = "//span[text()='Audits']")
-    WebElement auditTab;
-
-    @FindBy(xpath = "//span[@class='rnvText']/span")
-    WebElement loggedUser;
 
     @FindBy(xpath = "//span[text()='Portfolio']")
     WebElement portfolioMenu;
 
     @FindBy(xpath = "//span[text()='Reports']")
-    WebElement reportsReview;
+    WebElement portfolioReports;
+
+    @FindBy(id = "//span[text()='Dashboard']")
+    WebElement dashboardReview;
+
+    @FindBy(xpath = "//span[text()='Pivot View']")
+    WebElement pivotReview;
+
+    @FindBy(xpath = "//span[text()='Inventory View']")
+    WebElement inventoryReview;
 
     @FindBy(xpath = "//span[@id='ctl00_ctl00_cphPageContent_cphPageContent_RadGrid1_ctl00_ctl04_lblJobNo']")
     WebElement adtDetail;
@@ -47,18 +51,24 @@ public class PortfolioPage extends BasePage {
     @FindBy(xpath = "//div[@id='cphPageContent_pageview_MasterDetails']/iframe")
     WebElement iPanel;
 
-    public void verifyAuditDetailTabsLists() throws InterruptedException {
+    public void verifyPorfolioDetailTabsLists() throws InterruptedException {
 
-        click(auditTab);
-        click(adtDetail);
-        Driver.get().switchTo().frame(wait.until(ExpectedConditions.elementToBeClickable(iPanel)));
-        click(edtMstTab);
-        click(saveMstTab);
-        Driver.get().switchTo().parentFrame();
-        click(analysisTab);
-        click(unitsTab);
-        click(locationsTab);
-        click(reportsTab);
+        portfolioValues();
+        click(portfolioReports);
+        portfolioValues();
+        click(dashboardReview);
+        portfolioValues();
+        click(pivotReview);
+        portfolioValues();
+        click(inventoryReview);
+
+    }
+
+    public void portfolioValues() throws InterruptedException {
+
+        WebElement listMenu = portfolioMenu;
+        Actions actions = new Actions(Driver.get());
+        actions.moveToElement(listMenu).perform();
 
     }
 

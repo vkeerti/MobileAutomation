@@ -1,11 +1,9 @@
 package com.quiktrak.pages;
 
 import com.quiktrak.utilities.BrowserUtils;
-import com.quiktrak.utilities.Driver;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /*This page contains
  * Locaters of Web Elements

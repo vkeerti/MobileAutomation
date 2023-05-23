@@ -15,17 +15,20 @@ import org.openqa.selenium.safari.SafariDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+
 //this method is driver class which prepare as singelton desin pattern but it is support parallel testing and selenium grid
 public class Driver {
-    private Driver(){}
-
-
     private static InheritableThreadLocal<WebDriver> driverPool = new InheritableThreadLocal<>();
+
+
+    private Driver() {
+    }
+
     public static WebDriver get() {
 
         if (driverPool.get() == null) {
             String browser = System.getProperty("browser") != null ? browser = System.getProperty("browser") : ConfigurationReader.get("browser");
-             switch (browser) {
+            switch (browser) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     driverPool.set(new ChromeDriver());
@@ -65,7 +68,7 @@ public class Driver {
                     ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.setCapability("platform", Platform.ANY);
                     try {
-                        driverPool.set(new RemoteWebDriver(new URL("http://54.173.46.143:4444/wd/hub"),chromeOptions));
+                        driverPool.set(new RemoteWebDriver(new URL("http://54.173.46.143:4444/wd/hub"), chromeOptions));
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }
@@ -73,6 +76,7 @@ public class Driver {
         }
         return driverPool.get();
     }
+
     public static void closeDriver() {
         driverPool.get().quit();
         driverPool.remove();

@@ -39,9 +39,10 @@ public class BrowserUtils {
 
     /**
      * Switches to new window by the exact title. Returns to original window if target title not found
+     *
      * @param targetTitle
      */
-    public static void switchToWindow(String targetTitle,WebDriver driver) {
+    public static void switchToWindow(String targetTitle, WebDriver driver) {
         String origin = Driver.get().getWindowHandle();
         for (String handle : Driver.get().getWindowHandles()) {
             Driver.get().switchTo().window(handle);
@@ -274,7 +275,6 @@ public class BrowserUtils {
     }
 
 
-
     /**
      * Performs double click action on an element
      *
@@ -297,6 +297,7 @@ public class BrowserUtils {
 
     /**
      * Highlighs an element by changing its background and border color
+     *
      * @param element
      */
     public static void highlight(WebElement element) {
@@ -392,8 +393,9 @@ public class BrowserUtils {
     }
 
     /**
-     *  checks that an element is present on the DOM of a page. This does not
-     *    * necessarily mean that the element is visible.
+     * checks that an element is present on the DOM of a page. This does not
+     * * necessarily mean that the element is visible.
+     *
      * @param by
      * @param time
      */
@@ -401,32 +403,33 @@ public class BrowserUtils {
         new WebDriverWait(Driver.get(), time).until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
-    public static boolean isElementPresent(WebElement element){
-        try{
+    public static boolean isElementPresent(WebElement element) {
+        try {
             return element.isDisplayed();
-        }catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             return false;
         }
     }
 
-    public static String selectQuantity(List<WebElement> quantity, String num){
-        String selectedNum=null;
+    public static String selectQuantity(List<WebElement> quantity, String num) {
+        String selectedNum = null;
 
-        for (WebElement e: quantity) {
-            if(e.getText().trim().equals(num)){
+        for (WebElement e : quantity) {
+            if (e.getText().trim().equals(num)) {
                 selectedNum = e.getText().trim();
                 e.click();
                 break;
-            }}
+            }
+        }
         return selectedNum;
     }
 
-    public static Double getResult(List<Double> p, List<Double> q){
-        Double r =0.0;
+    public static Double getResult(List<Double> p, List<Double> q) {
+        Double r = 0.0;
         for (int i = 0; i < p.size(); i++) {
-             r+=(p.get(i)*q.get(i));
+            r += (p.get(i) * q.get(i));
         }
-        r=Math.round(r*100.0)/100.0;
+        r = Math.round(r * 100.0) / 100.0;
         return r;
     }
 

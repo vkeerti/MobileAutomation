@@ -15,7 +15,7 @@ import java.awt.*;
 public abstract class BasePage {
     static Keyboard keyboard;
 
-    static WebDriverWait wait = new WebDriverWait(Driver.get(),30);
+    static WebDriverWait wait = new WebDriverWait(Driver.get(), 30);
 
 
     public BasePage() {

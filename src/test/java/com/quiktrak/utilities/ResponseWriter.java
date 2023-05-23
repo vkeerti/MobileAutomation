@@ -1,9 +1,12 @@
 package com.quiktrak.utilities;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class ResponseWriter {
-    public static  BufferedWriter writer;
+    public static BufferedWriter writer;
+
     static {
 
         try {
@@ -13,7 +16,8 @@ public class ResponseWriter {
             throw new RuntimeException(e);
         }
     }
+
     public static void write(String text) throws IOException {
-        writer.write(text+"\n");
+        writer.write(text + "\n");
     }
 }

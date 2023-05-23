@@ -1,19 +1,9 @@
 package com.quiktrak.pages;
 
-import com.quiktrak.utilities.BrowserUtils;
-import com.quiktrak.utilities.ConfigurationReader;
-import com.quiktrak.utilities.Driver;
-import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
-import com.quiktrak.pages.BasePage;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
-import java.time.Duration;
 
 public class LoginPage extends BasePage {
 

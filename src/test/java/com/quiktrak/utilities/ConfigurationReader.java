@@ -2,6 +2,7 @@ package com.quiktrak.utilities;
 
 import java.io.FileInputStream;
 import java.util.Properties;
+
 //contains the reading methods of configuration.properties file
 public class ConfigurationReader {
     private static Properties properties;

@@ -1,23 +1,19 @@
 package com.quiktrak.step_definitions;
 
-import com.quiktrak.pages.AuditPage;
+import com.quiktrak.pages.UtilitiesPage;
 import com.quiktrak.utilities.BrowserUtils;
 import io.cucumber.java.en.Then;
 
 
 public class UtilitiesPageStepDefs {
 
-    AuditPage auditPage = new AuditPage();
-
-    @Then("verify Audit Detail tabs and list")
-    public void verifyAuditDetailTabsAndList() throws InterruptedException {
-        BrowserUtils.waitForPageToLoad(15);
-        auditPage.verifyAuditDetailTabsLists();
-
-    }
+    UtilitiesPage utilitiesPage = new UtilitiesPage();
 
     @Then("verify Utilities Detail")
-    public void verifyUtilitiesDetail() {
+    public void verifyUtilitiesDetail() throws InterruptedException {
+        BrowserUtils.waitForPageToLoad(15);
+        utilitiesPage.verifyUnitDetailTab();
+
 
     }
 }
