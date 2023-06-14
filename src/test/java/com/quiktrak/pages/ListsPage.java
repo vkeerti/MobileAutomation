@@ -55,7 +55,6 @@ public class ListsPage extends BasePage {
     @FindBy(xpath = "//button[@name='ctl00$cphPopupContent$fvAuditDetails$btnSave']//span[text()='Save']")
     WebElement saveMstTab;
 
-
     @FindBy(xpath = "//div[@id='cphPageContent_pageview_MasterDetails']/iframe")
     WebElement iPanel;
 

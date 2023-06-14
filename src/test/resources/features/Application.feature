@@ -8,6 +8,7 @@ Feature: Login into application
   @sanity @regression
   Scenario: Login application and validate the accessibility
     Then verify user able to redirect the Home page
+    And the last successful data feed was received
 
   @sanity @regression
   Scenario: Access the top menu and validate pages are loading correctly

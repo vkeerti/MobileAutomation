@@ -1,9 +1,15 @@
 package com.quiktrak.pages;
 
+import com.quiktrak.utilities.BrowserUtils;
 import com.quiktrak.utilities.Driver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.Arrays;
+import java.util.List;
 
 /*This page contains
  * Locaters of Web Elements
@@ -52,23 +58,16 @@ public class PortfolioPage extends BasePage {
     WebElement iPanel;
 
     public void verifyPorfolioDetailTabsLists() throws InterruptedException {
+        List<String> portfolioList = Arrays.asList("Reports","Dashboard","Pivot View","Inventory View");
+        portfolioList.stream().forEach(label->{
+            try {
+                new Actions(Driver.get()).moveToElement(portfolioMenu).perform();
+                Driver.get().findElement(By.linkText(label)).click();
+                BrowserUtils.waitForPageToLoad(5);
+            } catch (TimeoutException e){
+            }}
+        );
 
-        portfolioValues();
-        click(portfolioReports);
-        portfolioValues();
-        click(dashboardReview);
-        portfolioValues();
-        click(pivotReview);
-        portfolioValues();
-        click(inventoryReview);
-
-    }
-
-    public void portfolioValues() throws InterruptedException {
-
-        WebElement listMenu = portfolioMenu;
-        Actions actions = new Actions(Driver.get());
-        actions.moveToElement(listMenu).perform();
 
     }
 

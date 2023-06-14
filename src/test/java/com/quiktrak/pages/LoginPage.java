@@ -20,6 +20,8 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//li[@class='rwListItem']/span")
     WebElement Closebtn;
 
+    @FindBy(xpath = "//div[@id='RAD_SPLITTER_PANE_CONTENT_ctl00_cphPageContent_RadPane3']//div[starts-with(@id,'ctl00_cphPageContent_RadDock') and @class='WidgetPlaceholderContainer']")
+    WebElement getLastDataImport;
 
     public void login(String un, String pwd) throws AWTException, InterruptedException {
         click(username);
@@ -35,6 +37,9 @@ public class LoginPage extends BasePage {
         click(loginBtn);
         Thread.sleep(5000);
         click(Closebtn);
+
+        String lastDataImport = getLastDataImport.getAttribute("innerText");
+        System.out.println("Last Successful Data Imported :  " + lastDataImport);
 
     }
 }

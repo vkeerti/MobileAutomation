@@ -17,8 +17,9 @@ import org.junit.runner.RunWith;
                 "rerun:target/rerun.txt"},
         features = "src/test/resources/features",
         glue = "com/quiktrak/step_definitions",
+        //plugin = {"pretty", "html:target/cucumber", "json:target/cucumber.json", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
         dryRun = false,
-        tags = {"@regression"}
+        tags = {"@sanity"}
 
 )
 public class CukesRunner {

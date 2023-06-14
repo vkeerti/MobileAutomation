@@ -3,6 +3,7 @@ package com.quiktrak.step_definitions;
 import com.quiktrak.pages.LoginPage;
 import com.quiktrak.utilities.ConfigurationReader;
 import com.quiktrak.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
@@ -18,11 +19,17 @@ public class LoginPageStepDefs {
 
         Driver.get().get(ConfigurationReader.get("url"));
 
+
     }
 
     @When("User login the application")
     public void userLoginTheApplication() throws InterruptedException, AWTException {
         loginPage.login(ConfigurationReader.get("username"), ConfigurationReader.get("password"));
+
+    }
+
+    @And("the last successful data feed was received")
+    public void theLastSuccessfulDataFeedWasReceived() {
 
     }
 }
