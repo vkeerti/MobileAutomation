@@ -1,0 +1,9 @@
+<suite name ="Automation suit" verbose ="1" thread-count="3" parallel="tests">
+
+    <test name ="FreshChrome test">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.quiktrak.runners.CukesRunner"/>
+        </classes>
+    </test>
+</suite>

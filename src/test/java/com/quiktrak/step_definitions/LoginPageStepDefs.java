@@ -32,4 +32,5 @@ public class LoginPageStepDefs {
     public void theLastSuccessfulDataFeedWasReceived() {
 
     }
+
 }

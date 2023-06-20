@@ -1,17 +1,17 @@
-![hepsiburada](Files/Quiktrak.png)
+![Quiktrak](Files/Quiktrak.png)
 
 # PROJECT SUMMARY
 
-* This project developed for Hepsiburada Interview Task
-* **[Java 11.0.15](https://www.oracle.com/tr/java/technologies/javase/jdk11-archive-downloads.html)** was used as
+* This project developed for QuikTrak Web & Mobile App
+* **[Java 20](https://www.oracle.com/tr/java/technologies/javase/jdk11-archive-downloads.html)** was used as
   developing language
-* **[Maven 3.8.5](https://maven.apache.org/download.cgi)** Build managment tool
+* **[Maven 3.9.1](https://maven.apache.org/download.cgi)** Build managment tool
 * Cucumber Framework was used
 * Project support multi OS
 * Project support different browsers, selenium grid and parallel testing
 * For reporting was used "maven-cucumber-reporting plugin" version "5.0.0"
 * Project was developed with **[Intellij IDEA](https://www.jetbrains.com/idea/download/#section=windows)**
-* You can find the task details on **[QA-Assignment-Hepsiburada](Files/QA-Assignment-hepsiburada.pdf)**
+* You can find the task details on **[QA-Assignment-Quiktrak](Files/QA-Assignment-quiktrak.pdf)**
 
 # SUMMARY OF STRUCTURE
 
