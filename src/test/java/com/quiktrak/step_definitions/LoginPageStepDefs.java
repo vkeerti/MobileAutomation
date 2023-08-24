@@ -5,6 +5,7 @@ import com.quiktrak.utilities.ConfigurationReader;
 import com.quiktrak.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import java.awt.*;
@@ -19,7 +20,6 @@ public class LoginPageStepDefs {
 
         Driver.get().get(ConfigurationReader.get("url"));
 
-
     }
 
     @When("User login the application")
@@ -28,7 +28,7 @@ public class LoginPageStepDefs {
 
     }
 
-    @And("the last successful data feed was received")
+    @Then("the last successful data feed was received")
     public void theLastSuccessfulDataFeedWasReceived() {
 
     }

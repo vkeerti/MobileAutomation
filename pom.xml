@@ -105,6 +105,18 @@
             <type>pom</type>
         </dependency>
 
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>8.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>7.5.1</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>

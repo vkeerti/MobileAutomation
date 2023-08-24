@@ -1,5 +1,7 @@
 package com.quiktrak.pages;
 
+import com.quiktrak.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -8,7 +10,7 @@ import java.awt.*;
 public class LoginPage extends BasePage {
 
 
-    @FindBy(id = "ctl00_cphPageContent_RQLogin_Username")
+   @FindBy(id = "ctl00_cphPageContent_RQLogin_Username")
     WebElement username;
 
     @FindBy(id = "ctl00_cphPageContent_RQLogin_PasswordMask")

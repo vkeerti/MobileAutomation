@@ -19,7 +19,7 @@ import org.junit.runner.RunWith;
         glue = "com/quiktrak/step_definitions",
         //plugin = {"pretty", "html:target/cucumber", "json:target/cucumber.json", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
         dryRun = false,
-        tags = {"@sanity"}
+        tags = {"@mobile"}
 
 )
 public class CukesRunner {
