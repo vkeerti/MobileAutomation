@@ -1,7 +1,9 @@
-Feature: Test Feature
+Feature: Revoquest Mobile automation
 
   @mobile
-  Scenario: Test1
-    Given Go to the App
-    When Click the button
+  Scenario: Revoquest Mobile automation
+    Given Launch Revoquest mobile app
+    When SignIn to Revoquest app
+    When Validate Safe message
+    When Click on Sync
     Then Close the app
