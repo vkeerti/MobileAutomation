@@ -1,25 +1,19 @@
 package com.quiktrak.pages;
 
 import com.quiktrak.utilities.Driver;
-import com.quiktrak.utilities.Keyboard;
 import io.appium.java_client.AppiumDriver;
-import org.junit.rules.Timeout;
-import org.openqa.selenium.ElementNotInteractableException;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public abstract class BasePage {
-    static Keyboard keyboard;
 
-   static WebDriverWait wait = new WebDriverWait(Driver.get(), 20, TimeUnit.SECONDS.ordinal());
+
+    static WebDriverWait wait = new WebDriverWait(Driver.get(), 100);
 
 
     public BasePage() {
@@ -39,10 +33,7 @@ public abstract class BasePage {
     }
 
 
-    public static void typeWithRobot(String text) throws AWTException {
-        keyboard = new Keyboard();
-        keyboard.type(text);
-    }
+
     public static void sendkeys(WebElement element,String value){
         element.sendKeys(value);
     }
@@ -60,8 +51,25 @@ public abstract class BasePage {
 
     public void waitForElementToAppear(WebElement element, AppiumDriver driver)
     {
-        WebDriverWait wait = new WebDriverWait(driver,20,TimeUnit.SECONDS.ordinal() );
+        WebDriverWait wait = new WebDriverWait(driver,50);
         wait.until(ExpectedConditions.attributeContains((element), "text", "Cart"));
+    }
+
+    public boolean find(final WebElement element, int timeout) {
+        try {
+            WebDriverWait wait = new WebDriverWait(Driver.get(), 50);
+            return wait.until(new ExpectedCondition<Boolean>() {
+                @Override
+                public Boolean apply(WebDriver driver) {
+                    if (element.isDisplayed()) {
+                        return true;
+                    }
+                    return false;
+                }
+            });
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public static void click(WebElement element) throws InterruptedException {

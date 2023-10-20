@@ -2,7 +2,9 @@ package com.quiktrak.utilities;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
+//import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -19,6 +21,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -27,7 +30,7 @@ public class Driver {
     private static InheritableThreadLocal<AppiumDriver> driverPool = new InheritableThreadLocal<>();
     private Driver() {
     }
-    public static WebDriver get() {
+    public static AppiumDriver get() {
         if (driverPool.get() == null) {
             String browser = System.getProperty("browser") != null ? browser = System.getProperty("browser") : ConfigurationReader.get("browser");
             switch (browser) {
@@ -40,9 +43,11 @@ public class Driver {
                     desiredCapabilities.setCapability("appActivity","crc644ddd6e0fa0b9a8bd.SplashScreen");
                     desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,"XCUITest");
                     desiredCapabilities.setCapability(MobileCapabilityType.UDID,"00008120-001208211100201E");
-                    desiredCapabilities.setCapability(MobileCapabilityType.APP,"C:/apkfiles/Revoquest_4.0.2.01_Apkpure.apk");
+                    String iosAppAPKPath=System.getProperty("user.dir")+ File.separator+"scr"+File.separator+"test"+File.separator+"java"+File.separator+"com"+
+                            File.separator+"quicktrak"+File.separator+"APKFile"+ File.separator+"com.quiktrak.rqmobile.apk";
+                    desiredCapabilities.setCapability(MobileCapabilityType.APP,iosAppAPKPath);
                     try{
-                        driverPool.set(new AndroidDriver(new URL("http://localhost:4723/wd/hub"),desiredCapabilities));
+                        driverPool.set(new IOSDriver(new URL("http://localhost:4723/wd/hub"),desiredCapabilities));
                     } catch (MalformedURLException e){
                         e.printStackTrace();
                     }
@@ -58,7 +63,7 @@ public class Driver {
                     desiredCapabilities1.setCapability("unlockType","pin");
                     desiredCapabilities1.setCapability("unlockKey","8622");
                     try{
-                        driverPool.set(new AndroidDriver<AndroidElement>(new URL("http://localhost:4723/wd/hub"),desiredCapabilities1));
+                        driverPool.set(new AndroidDriver<AndroidElement> (new URL("http://localhost:4723/wd/hub"),desiredCapabilities1));
                     } catch (MalformedURLException e){
                         e.printStackTrace();
                     }
@@ -69,5 +74,6 @@ public class Driver {
     public static void closeDriver() {
         driverPool.get().quit();
         driverPool.remove();
+
     }
 }

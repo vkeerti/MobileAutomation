@@ -16,6 +16,7 @@ public class AppiumServer {
     }
 
     public static void stop() {
+
         server.stop();
     }
 
