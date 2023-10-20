@@ -1,9 +1,12 @@
-Feature: Revoquest Mobile automation
+Feature: RQ mobile automation
 
   @mobile
-  Scenario: Revoquest Mobile automation
-    Given Launch Revoquest mobile app
-    When SignIn to Revoquest app
-    When Validate Safe message
-    When Click on Sync
+  Scenario: RQ mobile automation
+    Given Launch RQ mobile app
+    When SignIn validation
+    When Validate safe message
+    When Click on sync
+    When Select the jobs and click Open
+    When Accept Instructions
+    When Validate Home
     Then Close the app
