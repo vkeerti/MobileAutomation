@@ -22,6 +22,6 @@ import org.junit.runner.RunWith;
         tags = {"@mobile"}
 
 )
-public class CukesRunner {
-    
+public class MobileRunner {
+
 }

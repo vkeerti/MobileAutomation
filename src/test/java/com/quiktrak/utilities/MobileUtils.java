@@ -12,14 +12,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 
-public class BrowserUtils {
+public class MobileUtils {
     /*
      * takes screenshot
      * @param name
@@ -129,7 +128,7 @@ public class BrowserUtils {
      * @return
      */
     public static WebElement waitForVisibility(By locator, int timeout) {
-        WebDriverWait wait = new WebDriverWait(Driver.get(), 10, TimeUnit.SECONDS.ordinal());
+        WebDriverWait wait = new WebDriverWait(Driver.get(), 50, TimeUnit.MILLISECONDS.ordinal());
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
@@ -141,7 +140,7 @@ public class BrowserUtils {
      * @return
      */
     public static WebElement waitForClickablility(WebElement element, int timeout) {
-        WebDriverWait wait = new WebDriverWait(Driver.get(), TimeUnit.SECONDS.ordinal());
+        WebDriverWait wait = new WebDriverWait(Driver.get(), 50);
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
@@ -153,7 +152,7 @@ public class BrowserUtils {
      * @return
      */
     public static WebElement waitForClickablility(By locator, int timeout) {
-        WebDriverWait wait = new WebDriverWait(Driver.get(), TimeUnit.SECONDS.ordinal());
+        WebDriverWait wait = new WebDriverWait(Driver.get(), 10);
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
@@ -169,7 +168,7 @@ public class BrowserUtils {
             }
         };
         try {
-            WebDriverWait wait = new WebDriverWait(Driver.get(), TimeUnit.SECONDS.ordinal());
+            WebDriverWait wait = new WebDriverWait(Driver.get(), 10);
             wait.until(expectation);
         } catch (Throwable error) {
             error.printStackTrace();
@@ -402,8 +401,34 @@ public class BrowserUtils {
      * @param time
      */
     public static void waitForPresenceOfElement(By by, long time) {
-        new WebDriverWait(Driver.get(), 10).until(ExpectedConditions.presenceOfElementLocated(by));
+        new WebDriverWait(Driver.get(), time).until(ExpectedConditions.presenceOfElementLocated(by));
     }
+
+    public static void waitForAlertMsg(long time) {
+        new WebDriverWait(Driver.get(), time).until(ExpectedConditions.alertIsPresent());
+    }
+
+    public static boolean isAlertExist(){
+        WebDriverWait wait = new WebDriverWait(Driver.get(),25);
+        boolean a;
+        if (wait.until(ExpectedConditions.alertIsPresent())==null){
+                a=false;
+        }else {
+            a=true;
+        }
+        return a;
+    }
+
+    public static Alert alert() {
+        WebDriverWait wait = new WebDriverWait(Driver.get(),25);
+
+        try {
+            return wait.until(ExpectedConditions.alertIsPresent());
+        } catch (TimeoutException e) {
+            throw new NoAlertPresentException("Alert not found", e);
+        }
+    }
+
 
     public static boolean isElementPresent(WebElement element) {
         try {

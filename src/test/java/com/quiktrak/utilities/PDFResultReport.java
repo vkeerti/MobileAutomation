@@ -82,8 +82,8 @@ public class PDFResultReport {
 	public static List<String> testCaseName1 = new ArrayList<String>();
 	public static List<String> testCaseDesc1 = new ArrayList<String>();
 	public static List<String> testCaseStartTimeList1 = new ArrayList<String>();
-	public static List<String> testCaseEndTimeList1 = new ArrayList<String>();	
-	public static int l = 2;	
+	public static List<String> testCaseEndTimeList1 = new ArrayList<String>();
+	public static int l = 2;
 	public static int iter;
 	public static void createPDFfile(String pdfFilename) {
 		try {
@@ -113,8 +113,8 @@ public class PDFResultReport {
 	}
 
 	public static void generatePDFLogo() throws MalformedURLException, IOException, DocumentException {
-		Image imgCG = Image.getInstance("C://Data//PDFReportData//QLog2.png");
-		float width1 = imgCG.getWidth()-100 ;
+		Image imgCG = Image.getInstance("C://Data//PDFReportData//QLogo2.png");
+		float width1 = imgCG.getWidth()-75 ;
 		float height1 = imgCG.getHeight()-75;
 		imgCG.scaleAbsolute(width1,height1);
 		imgCG.setAbsolutePosition(370f,790f);
@@ -124,23 +124,23 @@ public class PDFResultReport {
 
 	public static void createTestRunReport(String testScriptName, String environmentName) throws Exception {
 		try {
-			generatePDFLogo();		
-				Paragraph header = new Paragraph();
-				header.add("" + "\n");
-					header.add(new Chunk("Company Name : Quick TraK" + "\n", FontFactory.getFont(FontFactory.TIMES_ROMAN,10,Font.BOLD,BaseColor.RED.brighter())));
-					header.add(new Chunk("Test Script Name: ", FontFactory.getFont(FontFactory.TIMES_ROMAN,12,Font.BOLD,BaseColor.BLUE)));
-					header.add(new Chunk(testScriptName + "\n", FontFactory.getFont(FontFactory.TIMES_ROMAN,10,Font.BOLD,BaseColor.BLACK)));
-					//header.add(new Chunk("Company Name : " +"Quick TraK" + "\n", FontFactory.getFont(FontFactory.TIMES_ROMAN,10,Font.BOLD,BaseColor.RED.brighter())));
-				
-				event.setHeader(header);
-				doc.add(new Paragraph(" "));
-				doc.add(new Paragraph(" "));
-				paragraph1 = new Paragraph("", FontFactory.getFont(
-				FontFactory.TIMES_ROMAN,10,Font.BOLD,BaseColor.BLACK));
-				paragraph1.setAlignment(paragraph.ALIGN_LEFT);
-				paragraph1 = new Paragraph("", FontFactory.getFont(FontFactory.TIMES_ROMAN,10,Font.BOLD,BaseColor.BLACK));
-				doc.add(paragraph1);
-				
+			generatePDFLogo();
+			Paragraph header = new Paragraph();
+			header.add("" + "\n");
+			header.add(new Chunk("Company Name : QUIKTRAK" + "\n", FontFactory.getFont(FontFactory.TIMES_ROMAN,10,Font.BOLD,BaseColor.RED.brighter())));
+			header.add(new Chunk("Test Script Name: ", FontFactory.getFont(FontFactory.TIMES_ROMAN,12,Font.BOLD,BaseColor.BLUE)));
+			header.add(new Chunk(testScriptName + "\n", FontFactory.getFont(FontFactory.TIMES_ROMAN,10,Font.BOLD,BaseColor.BLACK)));
+			//header.add(new Chunk("Company Name : " +"Quick TraK" + "\n", FontFactory.getFont(FontFactory.TIMES_ROMAN,10,Font.BOLD,BaseColor.RED.brighter())));
+
+			event.setHeader(header);
+			doc.add(new Paragraph(" "));
+			doc.add(new Paragraph(" "));
+			paragraph1 = new Paragraph("", FontFactory.getFont(
+					FontFactory.TIMES_ROMAN,10,Font.BOLD,BaseColor.BLACK));
+			paragraph1.setAlignment(paragraph.ALIGN_LEFT);
+			paragraph1 = new Paragraph("", FontFactory.getFont(FontFactory.TIMES_ROMAN,10,Font.BOLD,BaseColor.BLACK));
+			doc.add(paragraph1);
+
 			paragraph1 = new Paragraph("Test Script Information:", FontFactory.getFont(FontFactory.TIMES_ROMAN,15,Font.BOLD,BaseColor.BLUE));
 			paragraph1.setAlignment(paragraph.ALIGN_LEFT);
 
@@ -148,9 +148,9 @@ public class PDFResultReport {
 			table1 = new PdfPTable(columnWidths);
 			table1.setHorizontalAlignment(Element.ALIGN_LEFT);
 			table1.setWidthPercentage(50f);
-			
+
 			insertCell(table1,"Application Name",Element.ALIGN_LEFT,1,summaryColor);
-			insertCell(table1,"Revoquest Mobile App",Element.ALIGN_LEFT,1,bf12);
+			insertCell(table1,"RQ Mobile App",Element.ALIGN_LEFT,1,bf12);
 			insertCell(table1,"Test Script Name",Element.ALIGN_LEFT,1,summaryColor);
 			insertCell(table1,testScriptName,Element.ALIGN_LEFT,1,bf12);
 			insertCell(table1,"Test Script Type",Element.ALIGN_LEFT,1,summaryColor);
@@ -166,21 +166,21 @@ public class PDFResultReport {
 			insertCell(table1,"Report Type",Element.ALIGN_LEFT,1,summaryColor);
 			insertCell(table1,"Post Execution Report",Element.ALIGN_LEFT,1,bf12);
 			insertCell(table1,"Build Version",Element.ALIGN_LEFT,1,summaryColor);
-			insertCell(table1,"4.1.0.40 (132)",Element.ALIGN_LEFT,1,bf12);
+			insertCell(table1,"4.1.0.44 (137)",Element.ALIGN_LEFT,1,bf12);
 			InetAddress ipAddr = InetAddress.getLocalHost();
 /*
 			insertCell(table1,"System ID",Element.ALIGN_LEFT,1,summaryColor);
-			insertCell(table1,ipAddr.getHostAddress(),Element.ALIGN_LEFT,1,bf12);	
+			insertCell(table1,ipAddr.getHostAddress(),Element.ALIGN_LEFT,1,bf12);
 */
-			     paragraph1.setIndentationLeft(3);
-			     paragraph1.add(table1);
-				 doc.add(paragraph1);
+			paragraph1.setIndentationLeft(3);
+			paragraph1.add(table1);
+			doc.add(paragraph1);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-	}	
-	
-	
+	}
+
+
 	public static void addStepDetails(String stepDesc, String stepExpResult, String stepActualResult,String stepResult, String objEvidence,AppiumDriver driver) throws AWTException {
 		stepDescription.add(stepDesc);
 		stepExpected.add(stepExpResult);
@@ -240,38 +240,38 @@ public class PDFResultReport {
 			testCaseNameList.add(testScriptName);
 			for (int n = 0; n < stepStatus.size(); n++) {
 				m = n + 1;
-				
+
 				if ((stepDescription.get(n) != "") && (stepExpected.get(n) != "") && (stepActual.get(n) != "")) {
 					j++;
-						System.out.println("Legth "+n+":"+stepPrequisite.size());
-						
-						if ((n <= stepPrequisite.size() - 1)) {
-							if(!objectEvidence.get(n).equalsIgnoreCase("N")) {
-								if ((st) || (snapShotPathList.get(n) != "")) {
+					System.out.println("Legth "+n+":"+stepPrequisite.size());
+
+					if ((n <= stepPrequisite.size() - 1)) {
+						if(!objectEvidence.get(n).equalsIgnoreCase("N")) {
+							if ((st) || (snapShotPathList.get(n) != "")) {
 								doc.newPage();
 								st = false;
 							}
-							}else {
-								if ((st) || (snapShotPathList.get(n) != "")) {								
-									st = false;
-									}
-								}
-						}
-						if ((n >=stepPrequisite.size() - 1)) {
-							if(objectEvidence.get(n).equalsIgnoreCase("Y")) {
+						}else {
 							if ((st) || (snapShotPathList.get(n) != "")) {
-							doc.newPage();
-							st = true;
+								st = false;
+							}
 						}
+					}
+					if ((n >=stepPrequisite.size() - 1)) {
+						if(objectEvidence.get(n).equalsIgnoreCase("Y")) {
+							if ((st) || (snapShotPathList.get(n) != "")) {
+								doc.newPage();
+								st = true;
+							}
 						}else if(objectEvidence.get(n).equalsIgnoreCase("N") && objectEvidence.get(n+1).equalsIgnoreCase("N")) {
 							if ((st) || (snapShotPathList.get(n) != "")) {
 								if(objectEvidence.get(n+3).equalsIgnoreCase("N")) {
-								doc.newPage();
-								st = true;
+									doc.newPage();
+									st = true;
 								}else {
 									st = true;
 								}
-							}							
+							}
 						}
 						else if(objectEvidence.get(n).equalsIgnoreCase("N") && objectEvidence.get(n+1).equalsIgnoreCase("Y") ) {
 							if ((st) || (snapShotPathList.get(n) != "")) {
@@ -280,16 +280,16 @@ public class PDFResultReport {
 							}
 						}
 						else {
-								if ((st) || (snapShotPathList.get(n) != "")) {									
-									st = false;
-								}								
-							}					
+							if ((st) || (snapShotPathList.get(n) != "")) {
+								st = false;
+							}
 						}
+					}
 					if (l == docWriter.getPageNumber()) {
 						l++;
 					}
-					
-					createParagraph(" ");					
+
+					createParagraph(" ");
 					float[] columnWidths = { 1f, 2f, 2f, 2f };
 					table2 = new PdfPTable(columnWidths);
 					table2.setWidthPercentage(99f);
@@ -303,18 +303,18 @@ public class PDFResultReport {
 					String t = Long.toString(testStepTempTime);
 					int st1=1;
 					if (loop != stepPrequisite.size()) {
-					insertCell(table2,stepPrequisite.get(n),Element.ALIGN_CENTER,0,bf12);
+						insertCell(table2,stepPrequisite.get(n),Element.ALIGN_CENTER,0,bf12);
 						loop++;
 					} else {
 						iter++;
 						insertCell(table2,Integer.toString(iter),Element.ALIGN_CENTER,0,bf12);
 					}
-						if (((String) stepStatus.get(n)).trim().equalsIgnoreCase("pass")) {
-							insertCell(table2,stepStatus.get(n),Element.ALIGN_CENTER,0,Fontcolor);
-						} else {
-							insertCell(table2,stepStatus.get(n),Element.ALIGN_CENTER,0,Fontcolor1);
-							i++;
-						}
+					if (((String) stepStatus.get(n)).trim().equalsIgnoreCase("pass")) {
+						insertCell(table2,stepStatus.get(n),Element.ALIGN_CENTER,0,Fontcolor);
+					} else {
+						insertCell(table2,stepStatus.get(n),Element.ALIGN_CENTER,0,Fontcolor1);
+						i++;
+					}
 					insertCell(table2,objectEvidence.get(n),Element.ALIGN_CENTER,0,	bf12);
 					insertCell(table2,testStepElapsedTimeList.get(n),Element.ALIGN_CENTER,0,bf12);
 					insertCell(table2,"Description:",Element.ALIGN_LEFT,4,bfBold12);
@@ -322,11 +322,11 @@ public class PDFResultReport {
 					insertCell(table2,"Expected:",Element.ALIGN_LEFT,4,	bfBold12);
 					insertCell(table2,stepExpected.get(n),Element.ALIGN_LEFT,4,bf12);
 					insertCell(table2,"Actual:",Element.ALIGN_LEFT,4,bfBold12);
-				    insertCell(table2,stepActual.get(n),Element.ALIGN_LEFT,	4,bf12);
+					insertCell(table2,stepActual.get(n),Element.ALIGN_LEFT,	4,bf12);
 					paragraph.add(table2);
 					doc.add(paragraph);
 				}
-					AddImagetoPDF(1,snapShotFolder + "//" + snapShotPathList.get(n),doc,m);
+				AddImagetoPDF(1,snapShotFolder + "//" + snapShotPathList.get(n),doc,m);
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -418,7 +418,7 @@ public class PDFResultReport {
 			paragraph.setAlignment(paragraph.ALIGN_LEFT);
 			doc.add(Chunk.NEWLINE); // Do not comment this
 			createTable();
-			createHeader(table,"Test Case Name","Epic ID","UserStory ID","Business Process","Script Status","Start Time","End Time","",summaryColor);
+			createHeader(table,"Test Case Name","Enabler ID","Product ID","Business Process","Script Status","Start Time","End Time","",summaryColor);
 			String s = sdf1.format(new Date());
 			for (int k = 0; k < testCaseName.size(); k++) {
 				String t = Long.toString(testStepTempTime);
@@ -427,14 +427,14 @@ public class PDFResultReport {
 				insertCell(table,requirementID.get(k),Element.ALIGN_CENTER,0,bf12);
 				insertCell(table,cemli.get(k),Element.ALIGN_CENTER,0,bf12);
 				insertCell(table,businessProcess.get(k),Element.ALIGN_CENTER,0,bf12);
-					if ((statusMap.get(testScriptName) != null)&& (((String) statusMap.get(testScriptName)).trim().equalsIgnoreCase("Pass"))) {
-						insertCell(table,"PASS",Element.ALIGN_CENTER,0,Fontcolor);
-					} else if ((statusMap.get(testScriptName) != null)
-							&& (((String) statusMap.get(testScriptName)).trim().equalsIgnoreCase("Fail"))) {
-						insertCell(table,"FAIL",Element.ALIGN_CENTER,0,Fontcolor1);
+				if ((statusMap.get(testScriptName) != null)&& (((String) statusMap.get(testScriptName)).trim().equalsIgnoreCase("Pass"))) {
+					insertCell(table,"PASS",Element.ALIGN_CENTER,0,Fontcolor);
+				} else if ((statusMap.get(testScriptName) != null)
+						&& (((String) statusMap.get(testScriptName)).trim().equalsIgnoreCase("Fail"))) {
+					insertCell(table,"FAIL",Element.ALIGN_CENTER,0,Fontcolor1);
 				}
-					insertCell(table,testCaseStartTimeList.get(0),Element.ALIGN_CENTER,0,bf12);
-					insertCell(table,testCaseEndTimeList.get(0),Element.ALIGN_CENTER,0,	bf12);
+				insertCell(table,testCaseStartTimeList.get(0),Element.ALIGN_CENTER,0,bf12);
+				insertCell(table,testCaseEndTimeList.get(0),Element.ALIGN_CENTER,0,	bf12);
 			}
 			insertCell(table,"Objective/Acceptance Criteria of script:",Element.ALIGN_LEFT,7,bfBold12);
 			insertCell(table,testCaseDesc.get(0),Element.ALIGN_LEFT,7,bf12);
@@ -482,7 +482,7 @@ public class PDFResultReport {
 	}
 
 	public static void createHeader1(PdfPTable table, String stepNo, String stepResult, String objEvidence,
-			String exeTime, Font bfBold12) {
+									 String exeTime, Font bfBold12) {
 		try {
 			insertCell(table,stepNo,Element.ALIGN_CENTER,1,bfBold12);
 			insertCell(table,stepResult,Element.ALIGN_CENTER,1,bfBold12);
@@ -578,7 +578,7 @@ public class PDFResultReport {
 			}else if(((objEvidence == "N")||(objEvidence == "Y") && (stepResult.equalsIgnoreCase("Fail")))) {
 				//ImageIO.write(screenFullImage,format,new File(snapShotFolder + "//" + fileName));
 				//snapShotPathList.add(fileName);
-			} 			
+			}
 			else {
 				snapShotPathList.add("");
 			}

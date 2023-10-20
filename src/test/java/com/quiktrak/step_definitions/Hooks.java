@@ -18,7 +18,7 @@ public class Hooks {
     @Before("@mobile")
     public void setUp() {
         //Driver.get().manage().timeouts().implicitlyWait(Duration.of(20));
-       // Driver.get().manage().window().maximize();
+        // Driver.get().manage().window().maximize();
         System.out.println("Setup");
         PDFResultReport.suiteName = "RevoquestApp";
         PDFResultReport.generateSuiteResultFolder("c:\\Data");
@@ -32,8 +32,8 @@ public class Hooks {
             final byte[] screenshot = ((TakesScreenshot) Driver.get()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png", "screenshot");
         }*/
-        PDFResultReport.createTestRunReport("Validating Revoquest Mobile Automation" ,"Stage");
-        PDFResultReport.addSummaryReport("Validating Revoquest Mobile Automation","Revoquest Mobile Automation","80191","78171","Mobile");
+        PDFResultReport.createTestRunReport("RQ Mobile Automation" ,"Stage");
+        PDFResultReport.addSummaryReport("RQ Mobile Automation","1) Validate to Revoquest Icon is exist 2)Validate the Revoquest version 3)Validate by default english language should selected 4) Validate Continue button is disabled when user don't enter any email address ,5)Validate Privacy Policy hyperlink is displayed, 6) Validate Invalid SignIn credentials, 7) Validate with valid SignIn credentials, 8) Validate the Safe message is displayed" ,"82032","68782","Mobile");
         PDFResultReport.captureTestCaseEndTime();
         PDFResultReport.generatePDFSummaryReport("Mobile_Automation_Report");
         PDFResultReport.generatePDFStepdetails("StepDetailsSummary");

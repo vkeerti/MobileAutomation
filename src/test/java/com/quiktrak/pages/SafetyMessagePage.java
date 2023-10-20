@@ -1,15 +1,14 @@
 package com.quiktrak.pages;
 
+import com.quiktrak.utilities.MobileUtils;
 import com.quiktrak.utilities.Driver;
 import com.quiktrak.utilities.PDFResultReport;
 import io.appium.java_client.AppiumDriver;
-import org.junit.rules.Timeout;
-import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.awt.*;
-import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class SafetyMessagePage extends BasePage{
@@ -23,17 +22,18 @@ public class SafetyMessagePage extends BasePage{
     WebElement safetyMessageWindow;
 
     public void clickOk() throws InterruptedException, AWTException {
-        Thread.sleep(3000);
-        Driver.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        // Thread.sleep(15000);
+        MobileUtils.waitForPresenceOfElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[4]/android.widget.TextView"),20000);
+        // Driver.get().manage().timeouts().implicitlyWait(5000, TimeUnit.SECONDS);
         String safemsg=getOfText(safetyMsg);
         System.out.println("Safe message : ----------------  "+safemsg);
-      if (safetyMsg.isDisplayed())
-         PDFResultReport.addStepDetails(
-                "Validate the Safe message",
-                "Should validate the safe message ",
-                "Successfully to validate the safe message  :  "+safemsg,
-                "Pass",
-                "Y", (AppiumDriver) Driver.get());
+        if (safetyMsg.isDisplayed())
+            PDFResultReport.addStepDetails(
+                    "Validate the Safe message is displayed",
+                    "Should validate the safe message ",
+                    "Successfully to validate the safe message  :  "+safemsg,
+                    "Pass",
+                    "Y", (AppiumDriver) Driver.get());
         else{
             PDFResultReport.addStepDetails(
                     "Validate the Safe message",
@@ -42,7 +42,14 @@ public class SafetyMessagePage extends BasePage{
                     "fail",
                     "Y", (AppiumDriver) Driver.get());
         }
-       click(OkBtn);
+        click(OkBtn);
+        Driver.get().manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+        PDFResultReport.addStepDetails(
+                "Click on Ok Button and Navigate to Action screen",
+                "Should Click on Ok Button and Navigate to Action screen",
+                "Successfully Click on Ok Button and Navigate to Action screen",
+                "Pass",
+                "Y", (AppiumDriver) Driver.get());
     }
 
 }
