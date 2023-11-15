@@ -96,12 +96,13 @@ public class SignInPage extends BasePage{
         public void signIn(String emailName) throws AWTException {
                 Click(emailAddress);
                 sendkeys(emailAddress,emailName);
+                Driver.get().manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
                 PDFResultReport.addStepDetails(
                         "Enter the email address",
                         "Should enter the email address",
                         "Successfully enter the email address : "+emailName,
                         "Pass",
-                        "Y", (AppiumDriver) Driver.get());
+                        "Y", Driver.get());
                 Click(continueBtn);
                 Driver.get().manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
                 PDFResultReport.addStepDetails(
@@ -109,14 +110,14 @@ public class SignInPage extends BasePage{
                         "Should click on continue button",
                         "Successfully click on continue button ",
                         "Pass",
-                        "Y", (AppiumDriver) Driver.get());
+                        "Y",  Driver.get());
 
         }
 
         public void launchRQMobile() throws AWTException, InterruptedException {
                 if (Driver.get().isAppInstalled("com.quiktrak.rqmobile")) {
                         PDFResultReport.addStepDetails(
-                                "RQ Mobile app is install and launch",
+                                "Validate RQ Mobile app is install and launched",
                                 "RQ Mobile app should installed and launched",
                                 "Successfully RQ Mobile app is installed and launched",
                                 "Pass",
@@ -151,103 +152,69 @@ public class SignInPage extends BasePage{
                 MobileUtils.waitForPresenceOfElement(By.id("com.quiktrak.rqmobile:id/toolbar"),1000);
                 if (SignInWindow.isDisplayed()){
                         PDFResultReport.addStepDetails(
-                                "Validate the user is navigate to SignIn Window",
+                                "Validate user is navigate to SignIn Window",
                                 "Should navigate to SignIn window",
                                 "Successfully Navigate to SignIn Window",
                                 "Pass",
                                 "Y", Driver.get());
                 }else {
                         PDFResultReport.addStepDetails(
-                                "Navigate to SignIn Window",
+                                "Validate user is navigate to SignIn Window",
                                 "Should Navigate to SignIn window",
                                 "Successfully Navigate to SignIn Window",
                                 "Fail",
-                                "N", (AppiumDriver) Driver.get());
+                                "N", Driver.get());
                 }
-                // Revoquest Logo Is Displayed
-                if(revoquestImg.isDisplayed()){
+                // RQ Logo, Version and Privacy Is Displayed
+                if(revoquestImg.isDisplayed()||version.isDisplayed()||privacyPolicy.isDisplayed()){
                         PDFResultReport.addStepDetails(
-                                "Validate to RQ Icon is exist",
-                                "RQ Icon should be exist",
-                                "Successfully RQ Icon is exist",
+                                "Validate to RQ Icon, Version and Privacy Policy is exist, RQ Version :: "+version.getText()+" , PrivacyPolicy :: "+privacyPolicy.getText(),
+                                "RQ Icon, Version and Privacy Policy should be displayed, RQ Version :: "+version.getText()+" , PrivacyPolicy :: "+privacyPolicy.getText(),
+                                "Successfully displayed the RQ ICON , Version and Privacy Policy",
                                 "Pass",
-                                "Y", (AppiumDriver) Driver.get());
+                                "Y",  Driver.get());
                 }else {
                         PDFResultReport.addStepDetails(
-                                "Validate to RQ Icon is exist",
-                                "RQ Icon should be exist",
-                                "RQ Icon is not exist",
+                                "Validate to RQ Icon, Version and Privacy Policy is exist, RQ Version :: "+version.getText()+" , PrivacyPolicy :: "+privacyPolicy.getText(),
+                                "RQ Icon, Version and Privacy Policy should be displayed, RQ Version :: "+version.getText()+" , PrivacyPolicy :: "+privacyPolicy.getText(),
+                                "Un-Successfully displayed the RQ ICON , Version and Privacy Policy",
                                 "Fail",
-                                "Y", (AppiumDriver) Driver.get());
-                }
-
-                // RQ Version Is Displayed
-                if (version.isDisplayed()){
-                        PDFResultReport.addStepDetails(
-                                "Validate the RQ version",
-                                "RQ version should be displayed ",
-                                "Successfully RQ version should be displayed : "+version.getText(),
-                                "Pass",
-                                "Y", (AppiumDriver) Driver.get());
-                }else {
-                        PDFResultReport.addStepDetails(
-                                "Validate the RQ version",
-                                "RQ version should be displayed ",
-                                "un-Successfully to displayed the version : "+version.getText(),
-                                "Fail",
-                                "Y", (AppiumDriver) Driver.get());
+                                "Y",  Driver.get());
                 }
 
                 // RQ English
                 if (english.isDisplayed()){
                         PDFResultReport.addStepDetails(
-                                "Validate by default english language should selected ",
+                                "Validate by default english language is set as default",
                                 "Should select the english language by default ",
-                                "Successfully by default english language is select : "+english.getText(),
+                                "Successfully by default language is select as : "+english.getText(),
                                 "Pass",
-                                "Y", (AppiumDriver) Driver.get());
+                                "Y",Driver.get());
                 }else {
                         PDFResultReport.addStepDetails(
                                 "Validate by default english language should selected ",
                                 "Should select the english language by default ",
                                 "Un-Successfully to select the language : "+english.getText(),
                                 "Fail",
-                                "Y", (AppiumDriver) Driver.get());
+                                "Y", Driver.get());
                 }
 
                 // continue button is enable
                 if (!continueBtn.isEnabled()){
                         PDFResultReport.addStepDetails(
-                                "Validate Continue button is disabled when user don't enter any email address",
+                                "Validate continue button is disabled when user don't enter any email address",
                                 "Continue button should be disabled ",
                                 "Continue button should be disabled ",
                                 "Pass",
-                                "Y", (AppiumDriver) Driver.get());
+                                "Y",  Driver.get());
                 }else {
                         PDFResultReport.addStepDetails(
-                                "Continue button is disabled",
+                                "Validate Continue button is disabled",
                                 "Continue button should be disabled ",
                                 "Continue button should be enabled : ",
                                 "Fail",
-                                "Y", (AppiumDriver) Driver.get());
+                                "Y",  Driver.get());
                 }
-                // privacy policy is displayed
-                if (privacyPolicy.isDisplayed()){
-                        PDFResultReport.addStepDetails(
-                                "Validate Privacy Policy hyperlink is displayed",
-                                "Privacy policy hyperlink should be displayed",
-                                "Successfully privacy policy hyperlink is displayed ",
-                                "Pass",
-                                "Y", (AppiumDriver) Driver.get());
-                }else {
-                        PDFResultReport.addStepDetails(
-                                "Validate Privacy Policy hyperlink is displayed",
-                                "Privacy policy hyperlink should be displayed",
-                                "Un-Successfully privacy policy hyperlink is not displayed ",
-                                "Fail",
-                                "Y", (AppiumDriver) Driver.get());
-                }
-
 
         }
 }

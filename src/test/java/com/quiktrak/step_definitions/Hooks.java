@@ -17,8 +17,6 @@ public class Hooks {
 
     @Before("@mobile")
     public void setUp() {
-        //Driver.get().manage().timeouts().implicitlyWait(Duration.of(20));
-        // Driver.get().manage().window().maximize();
         System.out.println("Setup");
         PDFResultReport.suiteName = "RevoquestApp";
         PDFResultReport.generateSuiteResultFolder("c:\\Data");
@@ -27,19 +25,13 @@ public class Hooks {
     }
 
     @After("@mobile")
-    public void tearDown(Scenario scenario) throws Exception {
-       /* if (scenario.isFailed()) {
-            final byte[] screenshot = ((TakesScreenshot) Driver.get()).getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenshot, "image/png", "screenshot");
-        }*/
+    public void afterPDF() throws Exception {
         PDFResultReport.createTestRunReport("RQ Mobile Automation" ,"Stage");
-        PDFResultReport.addSummaryReport("RQ Mobile Automation","1) Validate to Revoquest Icon is exist 2)Validate the Revoquest version 3)Validate by default english language should selected 4) Validate Continue button is disabled when user don't enter any email address ,5)Validate Privacy Policy hyperlink is displayed, 6) Validate Invalid SignIn credentials, 7) Validate with valid SignIn credentials, 8) Validate the Safe message is displayed" ,"82032","68782","Mobile");
+        PDFResultReport.addSummaryReport("RQ Mobile Automation","1) Launch RQ Mobile App 2)Validate SignIn 3)Validate Safe Message 4)Validate sync process ,5)Select the jobs and click Open, 6) Validate Instructions, 7) Validate Home, 8) Validate Location, 9) Validate Setting, 10) Validate Auditing, 12) Validate Footer 11) Close the app" ,"BEELER TRACTOR COMPANY","Mahindra USA LLC","Mobile");
         PDFResultReport.captureTestCaseEndTime();
         PDFResultReport.generatePDFSummaryReport("Mobile_Automation_Report");
         PDFResultReport.generatePDFStepdetails("StepDetailsSummary");
-
         Driver.closeDriver();
     }
-
 
 }

@@ -72,9 +72,9 @@ public class JobsPage extends BasePage{
         }
         // Thread.sleep(1000);
         click(selectJob);
-
+        Thread.sleep(1000);
         PDFResultReport.addStepDetails(
-                "Select the Job",
+                "Select the job",
                 "Should select the job",
                 "Successfully select the job",
                 "Pass",
@@ -84,6 +84,7 @@ public class JobsPage extends BasePage{
       /*  Alert alert = Driver.get().switchTo().alert();
         String msg=alert.getText();
         System.out.println("******************"+msg);*/
+        Thread.sleep(2000);
         PDFResultReport.addStepDetails(
                 "System Found alert message",
                 "System Found alert message",
@@ -92,7 +93,6 @@ public class JobsPage extends BasePage{
                 "Y",  Driver.get());
         Alert alert = Driver.get().switchTo().alert();
         alert.accept();
-
     }
     public static boolean isAlertPresent()
     {
