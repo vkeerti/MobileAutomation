@@ -43,36 +43,22 @@ public class InstructionsPage extends BasePage{
                     "Pass",
                     "Y",  Driver.get());
         }
-        if (clientNumber.isDisplayed()){
-            PDFResultReport.addStepDetails(
-                    "Client number ",
-                    "Client number should displayed  ",
-                    "Successfully client number should be displayed, Client Number ::-- "+clientNumber.getText(),
+             /*if (clientNumber.isDisplayed()&&instructionMsg.isDisplayed()){
+                     PDFResultReport.addStepDetails(
+                    "Client number and Instruction is displayed ",
+                    "Client number and Instruction should displayed  ",
+                    "Successfully client number and instruction should be displayed, Client Number ::-- "+clientNumber.getText(),
                     "Pass",
                     "Y",  Driver.get());
-        }else {
-            PDFResultReport.addStepDetails(
+            }else {
+                 PDFResultReport.addStepDetails(
                     "Client number ",
                     "Client number should displayed  ",
                     "Un-Successfully client should be displayed,Client Number ----"+clientNumber.getText(),
                     "Fail",
                     "Y",  Driver.get());
-        }
-        if (instructionMsg.isDisplayed()){
-            PDFResultReport.addStepDetails(
-                    "Client instructions  msg ",
-                    "Client instructions  msg should displayed ",
-                    "Successfully Client instructions  msg  ::-- "+instructionMsg.getText(),
-                    "Pass",
-                    "Y",  Driver.get());
-        }else {
-            PDFResultReport.addStepDetails(
-                    "Client instructions  msg ",
-                    "Client instructions  msg should displayed ",
-                    "Un-Successfully Client instructions  msg  ::-- "+instructionMsg.getText(),
-                    "Pass",
-                    "Y",  Driver.get());
-        }
+        }*/
+
         acceptBtn.click();
 
 

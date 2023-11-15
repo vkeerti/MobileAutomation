@@ -91,6 +91,10 @@
             <version>6.8.1</version>
             <type>pom</type>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/androidx.appcompat/appcompat -->
+        <!-- https://mvnrepository.com/artifact/androidx.appcompat/appcompat -->
+
+
 
 
         <dependency>
@@ -104,6 +108,9 @@
             <artifactId>itextpdf</artifactId>
             <version>5.5.13.2</version>
         </dependency>
+
+
+
 
     </dependencies>
 

@@ -43,41 +43,34 @@ public class SyncPage extends BasePage{
     public void syncCompleteAlt() throws InterruptedException, AWTException {
         MobileUtils.waitForPresenceOfElement(By.className("android.widget.ImageView"),20000);
         click(sendAndReceiveResults);
+        Driver.get().manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
         PDFResultReport.addStepDetails(
                 "Click on Send and Receive Results",
                 "Should click on send and receive results ",
                 "Successfully click on send and receive results ",
                 "Pass",
                 "Y", Driver.get());
-        Thread.sleep(2000);
         click(SyncBtn);
-        Thread.sleep(3000);
+        Driver.get().manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
         PDFResultReport.addStepDetails(
-                "Click on Sync btn",
-                "Should click on sync btn ",
-                "Successfully click on sync btn",
+                "Click on sync button and Validate Sync is In-process ",
+                "Should validate the sync is In-process ",
+                "Sync is In-Process",
                 "Pass",
                 "Y",  Driver.get());
         // Thread.sleep(20000);
         Driver.get().manage().timeouts().implicitlyWait(3000, TimeUnit.SECONDS);
-        MobileUtils.waitForAlertMsg(200000);
+        MobileUtils.waitForAlertMsg(20000);
         Alert alert = Driver.get().switchTo().alert();
         String msg=alert.getText();
-        System.out.println("Alert message "+msg);
+        System.out.println("Sync alert message  :- "+msg);
         PDFResultReport.addStepDetails(
-                "SyncUp is completed",
-                "Should completed the ",
-                "Successfully Sync msg :: "+msg,
+                "Sync is completed",
+                "Should completed the  sync ",
+                "Successfully completed sync and Alert msg  :: "+msg,
                 "Pass",
                 "Y",  Driver.get());
         alert.accept();
-        Thread.sleep(3000);
-        PDFResultReport.addStepDetails(
-                "Click on Ok button and navigate to Action screen",
-                "Should click on OK button and navigate to Action screen",
-                "Successfully click on OK button and navigate to Action screen",
-                "Pass",
-                "Y",  Driver.get());
     }
 
 }

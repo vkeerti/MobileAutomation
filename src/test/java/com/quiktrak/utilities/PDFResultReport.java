@@ -122,6 +122,7 @@ public class PDFResultReport {
 
 	}
 
+
 	public static void createTestRunReport(String testScriptName, String environmentName) throws Exception {
 		try {
 			generatePDFLogo();
@@ -167,6 +168,10 @@ public class PDFResultReport {
 			insertCell(table1,"Post Execution Report",Element.ALIGN_LEFT,1,bf12);
 			insertCell(table1,"Build Version",Element.ALIGN_LEFT,1,summaryColor);
 			insertCell(table1,"4.1.0.44 (137)",Element.ALIGN_LEFT,1,bf12);
+			insertCell(table1,"Enabler",Element.ALIGN_LEFT,1,summaryColor);
+			insertCell(table1,"82032",Element.ALIGN_LEFT,1,bf12);
+			insertCell(table1,"Product ID",Element.ALIGN_LEFT,1,summaryColor);
+			insertCell(table1,"68782",Element.ALIGN_LEFT,1,bf12);
 			InetAddress ipAddr = InetAddress.getLocalHost();
 /*
 			insertCell(table1,"System ID",Element.ALIGN_LEFT,1,summaryColor);
@@ -384,7 +389,6 @@ public class PDFResultReport {
 
 	public static void addSummaryReport(String testScriptName, String testScriptDesc, String reqID, String celi,String bProcess) {
 		try {
-
 			testCaseName.add(testScriptName);
 			testCaseDesc.add(testScriptDesc);
 			requirementID.add(reqID);
@@ -418,14 +422,14 @@ public class PDFResultReport {
 			paragraph.setAlignment(paragraph.ALIGN_LEFT);
 			doc.add(Chunk.NEWLINE); // Do not comment this
 			createTable();
-			createHeader(table,"Test Case Name","Enabler ID","Product ID","Business Process","Script Status","Start Time","End Time","",summaryColor);
+			createHeader(table,"Test Case Name","Dealer Name","Client Name","Business Process","Script Status","Start Time","End Time","",summaryColor);
 			String s = sdf1.format(new Date());
 			for (int k = 0; k < testCaseName.size(); k++) {
 				String t = Long.toString(testStepTempTime);
 				m = k + 1;
 				insertCell(table,testCaseName.get(k),Element.ALIGN_CENTER,0,bf12);
-				insertCell(table,requirementID.get(k),Element.ALIGN_CENTER,0,bf12);
-				insertCell(table,cemli.get(k),Element.ALIGN_CENTER,0,bf12);
+				insertCell(table,requirementID.get(k),Element.ALIGN_CENTER,0,Fontcolor);
+				insertCell(table,cemli.get(k),Element.ALIGN_CENTER,0,Fontcolor);
 				insertCell(table,businessProcess.get(k),Element.ALIGN_CENTER,0,bf12);
 				if ((statusMap.get(testScriptName) != null)&& (((String) statusMap.get(testScriptName)).trim().equalsIgnoreCase("Pass"))) {
 					insertCell(table,"PASS",Element.ALIGN_CENTER,0,Fontcolor);
@@ -436,7 +440,7 @@ public class PDFResultReport {
 				insertCell(table,testCaseStartTimeList.get(0),Element.ALIGN_CENTER,0,bf12);
 				insertCell(table,testCaseEndTimeList.get(0),Element.ALIGN_CENTER,0,	bf12);
 			}
-			insertCell(table,"Objective/Acceptance Criteria of script:",Element.ALIGN_LEFT,7,bfBold12);
+			insertCell(table,"RQ Mobile Feature:",Element.ALIGN_LEFT,7,bfBold12);
 			insertCell(table,testCaseDesc.get(0),Element.ALIGN_LEFT,7,bf12);
 			paragraph.add(table);
 			doc.add(paragraph);
